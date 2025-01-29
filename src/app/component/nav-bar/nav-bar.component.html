@@ -1,0 +1,16 @@
+<mat-toolbar class="raised-toolbar">
+    <mat-toolbar-row>
+      <button mat-icon-button>
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span class="allerta-stencil-regular">Yukti</span>
+      <span class="example-spacer"></span>
+      <section>
+        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color" [hideSingleSelectionIndicator]="true" [(ngModel)]="selectedButton">
+          <ng-container *ngFor="let button of buttons">
+            <mat-button-toggle class="raised-toggle" value="{{button.label}}" [routerLink]="button.path">{{button.label}}</mat-button-toggle>
+          </ng-container>
+        </mat-button-toggle-group>
+      </section>
+    </mat-toolbar-row>
+  </mat-toolbar>

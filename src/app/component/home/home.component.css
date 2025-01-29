@@ -1,0 +1,77 @@
+.home-container {
+    text-align: center;
+    /* padding: 20px; */
+}
+
+.hero-section {
+    background: url('../../assets/hero-bg.jpg') no-repeat center center;
+    background-size: cover;
+    color: white;
+    padding: 100px 20px;
+}
+
+.hero-section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.features-section {
+    padding: 0px 15px;
+}
+
+.features-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.features-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.feature-card {
+    width: 28rem;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card mat-card-header {
+    display: flex;
+    align-items: center;
+}
+
+.feature-card mat-icon {
+    font-size: 48px;
+    margin-right: 16px;
+}
+@media (max-width: 768px) {
+    .feature-card {
+      width: 100%;
+      max-width: 90%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hero-section h1 {
+      font-size: 36px;
+    }
+  
+    .hero-section p {
+      font-size: 18px;
+    }
+  
+    .features-section h2 {
+      font-size: 28px;
+    }
+  
+    .feature-card {
+      width: 100%;
+      max-width: 100%;
+    }
+  }

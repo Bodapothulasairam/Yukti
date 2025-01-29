@@ -1,0 +1,21 @@
+<div class="home-container">
+    <div class="hero-section">
+        <h1>Welcome to Yukti</h1>
+        <p>Automating Job Applications, Simplifying Your Career Search.</p>
+        <button mat-raised-button color="accent" [routerLink]="'/sign-up'">Get Started</button>
+    </div>
+
+    <div class="features-section">
+        <h2>Features</h2>
+        <div class="features-grid">
+            <mat-card class="feature-card" *ngFor="let feature of features">
+                <mat-card-header>
+                    <mat-card-title style="font-weight: bold">{{ feature.title }}</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <p style="text-align: left;">{{ feature.description }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
