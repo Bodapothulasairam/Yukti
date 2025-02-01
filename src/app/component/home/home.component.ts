@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from "../../services/commonService";
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,15 +32,9 @@ export class HomeComponent {
       description: 'Receive real-time notifications about new job postings and application statuses.'
     }
   ];
-  constructor(private commonService: CommonService, private apiService: ApiService) {
-    if(!this.commonService.getIsLoggedIn()) {
-      setTimeout(() => {
-        // console.log('User not logged in');
-      }, 30000);
-    }
+  constructor(private apiService: ApiService) {
   }
   ngOnInit() {
-    this.commonService.setSelectedButton('Home');
   }
     
 }

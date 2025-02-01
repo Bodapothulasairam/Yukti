@@ -9,7 +9,6 @@ import { MustMatch } from '../../model/MustMatch';
 import { MatCardModule } from '@angular/material/card';
 import { Router } from '@angular/router';
 import { User } from "../../model/User.model";
-import { CommonService } from '../../services/commonService';
 import { ApiService } from '../../services/apiService';
 @Component({
   selector: 'app-sign-up',
@@ -33,12 +32,11 @@ export class SignUpComponent implements OnInit {
   thirdFormGroup!: FormGroup;
 
   constructor(private router: Router, private _formBuilder: FormBuilder, 
-    private commonService: CommonService, private apiService:ApiService ) {
+    private apiService:ApiService ) {
 
   }
 
   ngOnInit() {
-    this.commonService.setSelectedButton('Sign Up');
     this.firstFormGroup = this._formBuilder.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required]
@@ -87,7 +85,6 @@ export class SignUpComponent implements OnInit {
     this.apiService.registerUser(user).subscribe({
       next: (response:any) => {
         if(response=='OK') {
-          this.commonService.setSelectedButton('Sign In');
           this.router.navigate(['/login']);
         }
         alert('Registration Successful!');

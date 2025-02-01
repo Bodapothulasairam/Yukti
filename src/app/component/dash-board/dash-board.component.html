@@ -1,1 +1,30 @@
-<p>dash-board works!</p>
+<div class="container">
+    <mat-tab-group mat-stretch-tabs="false" mat-align-tabs="center">
+        <mat-tab label="Job Openings">
+            <div class="job-card-container">
+                <mat-card class="example-card" appearance="outlined" *ngFor="let job of jobs" (click)="openDialog(job)"
+                    matTooltip="Click to view job details">
+                    <mat-card-header>
+                        <mat-card-title style="font-weight: bold;">{{job.company_name}}</mat-card-title>
+                        <mat-card-subtitle style="font-weight: bold;">{{job.job_title}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <p><span style="font-weight: bold;">Job Type: </span><span>{{ job.job_type }}</span></p>
+                        <p><span style="font-weight: bold;">Job Posted: </span><span>{{ job.date_posted }}</span></p>
+                        <p><span style="font-weight: bold;">Job Location: </span><span>{{ job.location }}</span></p>
+                    </mat-card-content>
+                    <mat-card-actions class="card-actions">
+                        <button mat-button (click)="applyJob(job.apply_url)">Apply</button>
+                        <button mat-button>Save</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </mat-tab>
+        <mat-tab label="Applied">
+            <p>None so far</p>
+        </mat-tab>
+        <mat-tab label="Application Status">
+            <p>None so far</p>
+        </mat-tab>
+    </mat-tab-group>
+</div>

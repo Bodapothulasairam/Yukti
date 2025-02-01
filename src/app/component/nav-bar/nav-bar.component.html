@@ -1,16 +1,51 @@
 <mat-toolbar class="raised-toolbar">
-    <mat-toolbar-row>
-      <button mat-icon-button>
-        <mat-icon>menu</mat-icon>
-      </button>
-      <span class="allerta-stencil-regular">Yukti</span>
-      <span class="example-spacer"></span>
-      <section>
-        <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color" [hideSingleSelectionIndicator]="true" [(ngModel)]="selectedButton">
-          <ng-container *ngFor="let button of buttons">
-            <mat-button-toggle class="raised-toggle" value="{{button.label}}" [routerLink]="button.path">{{button.label}}</mat-button-toggle>
-          </ng-container>
-        </mat-button-toggle-group>
-      </section>
-    </mat-toolbar-row>
-  </mat-toolbar>
+  <mat-toolbar-row>
+    <button mat-icon-button class="menu-icon" (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+
+
+    <span class="allerta-stencil-regular">Yukti</span>
+
+
+    <span class="example-spacer"></span>
+
+ 
+    <section class="nav-buttons">
+      <mat-button-toggle-group name="favoriteColor" aria-label="Favorite Color" [hideSingleSelectionIndicator]="true" [(ngModel)]="selectedButton">
+        <ng-container *ngFor="let button of buttons">
+          <mat-button-toggle 
+            class="raised-toggle" 
+            value="{{button.label}}" 
+            [routerLink]="button.path" 
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="button.path === '/' ? { exact: true } : { exact: false }"
+          >
+            {{button.label}}
+          </mat-button-toggle>
+        </ng-container>
+      </mat-button-toggle-group>
+    </section>
+    <section *ngIf="isLoggedin">
+      <mat-icon class="logout_icon">exit_to_app</mat-icon>
+    </section>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="over" position="start" class="sidenav">
+    <mat-nav-list>
+      <ng-container *ngFor="let button of buttons">
+        <a 
+          mat-list-item 
+          [routerLink]="button.path" 
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="button.path === '/' ? { exact: true } : { exact: false }"
+          (click)="sidenav.close()">
+          {{button.label}}
+        </a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+</mat-sidenav-container>

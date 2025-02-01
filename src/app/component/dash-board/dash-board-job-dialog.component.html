@@ -1,0 +1,28 @@
+<h2 mat-dialog-title>{{data.company_name}}</h2>
+<mat-dialog-content class="mat-typography">
+    <span style="font-weight: bold; font-size: larger;">{{data.job_title}}</span>
+    <p>
+        <span style="font-weight: bold;">Job Type: </span><span>{{ data.job_type }}</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">Job Posted: </span><span>{{ data.date_posted }}</span>
+    </p>
+    <p>
+        <span style="font-weight: bold;">Job Location: </span><span>{{ data.location }}</span>
+    </p>
+    <p *ngIf="data.salary && (data.salary?.min || data.salary?.max)">
+        <span style="font-weight: bold;">Salary: </span><span>{{data.salary?.min | currency:
+            data.salary?.currency}}</span> -
+        <span>{{data.salary?.max | currency: data.salary?.currency}}</span>
+    </p>
+</mat-dialog-content>
+<mat-dialog-content class="mat-typography">
+    <p>
+        <span style="font-weight: bold;">Description: </span><span>{{ data.description }}</span>
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions class="card-actions">
+    <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Apply</button>
+    <button mat-button mat-dialog-close>Save</button>
+    <button mat-button mat-dialog-close class="closeButton">Close</button>
+</mat-dialog-actions>

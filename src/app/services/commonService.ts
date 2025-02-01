@@ -1,25 +1,25 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class CommonService {
-    private isLoggedIn: boolean = false;
-    private selectedButton: string = 'Home';
+    private isLoggedin = new BehaviorSubject<boolean>(false);
+    private dataSubject = new BehaviorSubject<{ label: string, path: string }[]>([
+    ]);
+    data$ = this.dataSubject.asObservable();
 
-    constructor() { }
-
-    getSelectedButton(): string {
-        return this.selectedButton;
-    }
-    getIsLoggedIn(): boolean {
-        return this.isLoggedIn;
+    updateData(data: any[]): Observable<any> {
+        this.dataSubject.next(data);
+        return this.data$;
     }
 
-    setSelectedButton(value: string): void {
-        this.selectedButton = value;
+    setLoggedIn(data: boolean): Observable<boolean> {
+        this.isLoggedin.next(data);
+        return this.isLoggedin;
     }
-    setIsLoggedIn(value: boolean): void {
-        this.isLoggedIn = value;
+    getLoggedIn(): boolean {
+        return this.isLoggedin.value;
     }
 }

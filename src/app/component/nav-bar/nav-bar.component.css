@@ -1,39 +1,73 @@
- button {
-    display: inline-block;
+button {
+  display: inline-block;
+}
+
+.allerta-stencil-regular {
+  font-family: "Allerta Stencil", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.raised-toolbar {
+  border-bottom: 2px solid #d6d2d2;
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+  background-color: #fff;
+  z-index: 1;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.raised-toggle {
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  border-radius: 28px;
+  padding: 0 16px;
+  margin: 1px;
+}
+
+/* Ensure the active class overrides Angular Material's styles */
+.mat-button-toggle.active,
+.mat-list-item.active {
+  background-color: #d3ffe9 !important; /* Use !important to override Material styles */
+  color: #000; /* Optional: Change text color for better visibility */
+}
+
+/* Hide menu icon by default */
+.menu-icon {
+  display: none;
+}
+.logout_icon{
+  font-size: 2rem;
+  height: 2rem;
+  width: 2rem;
+  margin-top: 30%;
+  cursor: pointer;
+}
+/* Hide navbar buttons on small screens */
+.nav-buttons {
+  display: block;
+}
+
+/* Show menu icon and hide navbar buttons on small screens */
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
   }
-  .allerta-stencil-regular {
-    font-family: "Allerta Stencil", serif;
-    font-weight: 400;
-    font-style: normal;
+
+  .nav-buttons {
+    display: none;
   }
-  
-  .raised-toolbar {
-    border-bottom: 2px solid #d6d2d2;;
-    box-shadow: 0px 3px 5px -1px rgba(0,0,0,0.2), 0px 6px 10px 0px rgba(0,0,0,0.14), 0px 1px 18px 0px rgba(0,0,0,0.12);
-    background-color: #fff; 
-    z-index: 1; 
-  }
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  
-  .raised-toggle {
-    box-shadow: 0px 3px 1px -2px rgba(0,0,0,0.2), 0px 2px 2px 0px rgba(0,0,0,0.14), 0px 1px 5px 0px rgba(0,0,0,0.12);
-    background-color: white;
-    border-radius: 28px;
-    padding: 0 16px;
-    margin: 1px;
-  }
-  
-  .raised-toggle.mat-button-toggle-checked {
-    background-color: #d3ffe9;
-  }
-  
-  .mat-button-toggle-group-appearance-standard:not([class*=mat-elevation-z]) {
-    box-shadow: none;
-  }
-  
-  .mat-button-toggle-group-appearance-standard {
-    border-radius: 0%;
-    border: none;
-  }
+}
+
+/* Sidenav styles */
+.sidenav {
+  width: 250px; /* Adjust width as needed */
+  background-color: #fff; /* Match your design */
+  box-shadow: 3px 0 6px rgba(0, 0, 0, 0.24);
+}
+
+.mat-nav-list .mat-list-item {
+  padding: 0 16px; /* Adjust padding as needed */
+}

@@ -5,7 +5,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CommonService } from '../../services/commonService';
+import { response } from 'express';
 @Component({
   selector: 'app-log-in',
   imports: [
@@ -21,10 +23,9 @@ import { CommonService } from '../../services/commonService';
 export class LogInComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private _formBuilder: FormBuilder, private commonService: CommonService) {}
+  constructor(private _formBuilder: FormBuilder, private router:Router, private commonService:CommonService) {}
 
   ngOnInit() {
-    this.commonService.setSelectedButton('Sign In');
     this.loginForm = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -34,7 +35,22 @@ export class LogInComponent implements OnInit {
   onLogin() {
     if (this.loginForm.valid) {
       const loginValues = this.loginForm.value;
-      console.log('Login Values:', loginValues);
+      localStorage.setItem('user', JSON.stringify({ isLoggedin: true }));
+      this.commonService.setLoggedIn(true);
+      if(loginValues)
+      {
+          this.commonService.updateData([
+            { label: 'Dashboard', path: '/dashboard' },
+            { label: 'Applied Jobs', path: '/applied-jobs' },
+            { label: 'Profile', path: '/profile' },
+            { label: 'Resume', path: '/resume' },
+            { label: 'Settings', path: '/settings' }
+          ]).subscribe((response: any) => {
+            setTimeout(() => {
+              this.router.navigate(['/dashboard']);
+            }, 500);
+          });
+      }
     } else {
       this.loginForm.markAllAsTouched();
     }
@@ -44,3 +60,4 @@ export class LogInComponent implements OnInit {
     console.log('Forgot Password clicked');
   }
 }
+

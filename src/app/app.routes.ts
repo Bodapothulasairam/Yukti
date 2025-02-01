@@ -14,5 +14,6 @@ export const routes: Routes = [
     { path: 'sign-up', component: SignUpComponent },
     { path: 'application-form', component: ApplicationFormComponent },
     { path: 'help', component: HelpComponent },
-    { path: 'profile', component: ProfileComponent }
+    { path: 'profile', component: ProfileComponent },
+    { path: '**', redirectTo: '/' }
 ];

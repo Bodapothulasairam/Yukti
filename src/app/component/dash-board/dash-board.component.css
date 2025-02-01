@@ -1,0 +1,39 @@
+.job-card-container{
+    display: flex !important;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+
+.mat-tab-group {
+    margin-bottom: 48px;
+}
+
+
+.example-card {
+    max-width: 400px;
+    min-width: 350px !important;
+    margin: 1%;
+}
+
+.example-card:hover {
+    cursor: pointer !important;
+    box-shadow: 3px 3px 5px 6px #ccc;
+    transform: scale(1.05);
+}
+
+.example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+}
+
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.closeButton {
+    color: rgb(255, 58, 58);
+}
